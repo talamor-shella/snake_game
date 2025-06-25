@@ -35,7 +35,19 @@ class Snake(GameObject):
             square = self._canvas.create_rectangle(x,y,x + SPACE_SIZE, y + SPACE_SIZE, fill = SNAKE_COLOR, tag = "snake")
             self.squares.append(square)
 
-    
+    def move(self,direction):
+        #get current position
+        x, y = self.coordinates[0]
 
+        #update position base on direction
+        if direction == "up":
+            y -= SPACE_SIZE
+        elif direction == "down":
+            y += SPACE_SIZE
+        elif direction == "left":
+            x -= SPACE_SIZE
+        elif direction == "right":
+            x += SPACE_SIZE
+            
 #food class inheriting from game object
 #game class for handling logi and GUI 
