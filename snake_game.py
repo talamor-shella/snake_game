@@ -117,4 +117,20 @@ class Game:
         else: 
             self.snake.remove_tail()
 
-        
+        #check for collision
+        if self.check_collision():
+            self.game_over()
+        else:
+            self.window.after(SPEED, self._update())
+
+    def check_collision(self):
+        x, y = self.snake.coordinates[0]
+
+        #checks wall collision
+        if x < 0 or x >= GAME_WIDTH or y < 0 or y >= GAME_HEIGHT:
+            return True
+        #check self collision
+        for segment in self.snake.coordinates[1:]:
+            if segment == [x, y]:
+                return True
+        return False            
