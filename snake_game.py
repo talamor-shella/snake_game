@@ -102,3 +102,19 @@ class Game:
         #create snake and food 
         self.snake = Snake(self.canvas)
         self.food = Food(self.canvas)
+
+        self._update()
+        self.window.mainloop()
+
+    def _update(self):
+        self.snake.move(self.direction)
+
+        if self.snake.coordinates[0] == self.food.coordinates:
+            self.score += 1 
+            self.canvas.delete("food") 
+            self.food = Food(self.canvas)
+            self.canvas.itemconfig(self.score_text, text = f"Score: {self.score}")   
+        else: 
+            self.snake.remove_tail()
+
+        
