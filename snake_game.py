@@ -103,6 +103,12 @@ class Game:
         self.snake = Snake(self.canvas)
         self.food = Food(self.canvas)
 
+        #bind arrow keys to control snake
+        self.window.bind("<Left>", self.turn_left)
+        self.window.bind("<RIght>", self.turn_right)
+        self.window.bind("<Up>", self.turn_up)
+        self.window.bind("<Down>", self.turn_down)
+
         self._update()
         self.window.mainloop()
 
