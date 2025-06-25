@@ -83,4 +83,18 @@ class Game:
         self.window.title("Snake Game OOP")
         self.window.resizable(False, False)
 
-        
+        #Center window screen
+        screen_width = self.window.winfo_screenwidth
+        screen_height = self.window.winfo_screenheight
+        x = int((screen_width / 2) - (GAME_WIDTH / 2))
+        y = int((screen_height / 2) - (GAME_HEIGHT / 2))
+        self.window.geometry(f"{GAME_WIDTH} x {GAME_HEIGHT} + {x} + {y}")
+
+        self.canvas = Canvas(self.window, bg = BACKGROUND_COLOR, height = GAME_HEIGHT, width = GAME_WIDTH)    
+        self.canvas.pack()
+
+        self.score = 0 
+        self.score_text = self.canvas.create_text(GAME_WIDTH / 2, 20, text = f"Score: {self.score}", fill ="white", font = ("consolas", 20)) #displays score
+
+        #initial direction
+        self.direction = "down"
