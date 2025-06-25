@@ -74,7 +74,7 @@ class Food(GameObject):
     
     def draw(self):
         x, y = self.coordinates
-        return self._canvas.create.oval(x, y , x + SPACE_SIZE, y + SPACE_SIZE, fill = FOOD_COLOR, tag = "food")
+        return self._canvas.create_oval(x, y , x + SPACE_SIZE, y + SPACE_SIZE, fill = FOOD_COLOR, tag = "food")
     
 #game class for handling logi and GUI 
 class Game:
@@ -84,11 +84,11 @@ class Game:
         self.window.resizable(False, False)
 
         #Center window screen
-        screen_width = self.window.winfo_screenwidth
-        screen_height = self.window.winfo_screenheight
+        screen_width = self.window.winfo_screenwidth()
+        screen_height = self.window.winfo_screenheight()
         x = int((screen_width / 2) - (GAME_WIDTH / 2))
         y = int((screen_height / 2) - (GAME_HEIGHT / 2))
-        self.window.geometry(f"{GAME_WIDTH} x {GAME_HEIGHT} + {x} + {y}")
+        self.window.geometry(f"{GAME_WIDTH}x{GAME_HEIGHT}+{x}+{y}")
 
         self.canvas = Canvas(self.window, bg = BACKGROUND_COLOR, height = GAME_HEIGHT, width = GAME_WIDTH)    
         self.canvas.pack()
@@ -105,7 +105,7 @@ class Game:
 
         #bind arrow keys to control snake
         self.window.bind("<Left>", self.turn_left)
-        self.window.bind("<RIght>", self.turn_right)
+        self.window.bind("<Right>", self.turn_right)
         self.window.bind("<Up>", self.turn_up)
         self.window.bind("<Down>", self.turn_down)
 
@@ -127,7 +127,7 @@ class Game:
         if self.check_collision():
             self.game_over()
         else:
-            self.window.after(SPEED, self._update())
+            self.window.after(SPEED, self._update)
 
     def check_collision(self):
         x, y = self.snake.coordinates[0]
@@ -140,7 +140,10 @@ class Game:
             if segment == [x, y]:
                 return True
         return False            
-    
+    def game_over(self):
+        self.canvas.delete(ALL)
+        self.canvas.create_text(GAME_WIDTH / 2, GAME_HEIGHT / 2, font = ("consolas", 40), text = "GAME OVER", fill = "red", tag = "gameover")
+
     #Arrow key events
     def turn_left(self,event):
         if self.direction != "right":
@@ -157,3 +160,6 @@ class Game:
     def turn_down(self,event):
         if self.direction != "up":
             self.direction = "down"
+
+#Start the game
+Game()
