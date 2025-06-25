@@ -98,3 +98,7 @@ class Game:
 
         #initial direction
         self.direction = "down"
+
+        #create snake and food 
+        self.snake = Snake(self.canvas)
+        self.food = Food(self.canvas)
