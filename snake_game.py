@@ -48,6 +48,12 @@ class Snake(GameObject):
             x -= SPACE_SIZE
         elif direction == "right":
             x += SPACE_SIZE
-            
+        
+        #inserts new head to the front
+        self.coordinates.insert(0,[x,y])
+        square = self._canvas.create_rectangle(x, y, x + SPACE_SIZE, y + SPACE_SIZE, fill = SNAKE_COLOR)
+        self.squares.insert(0, square)
+
+
 #food class inheriting from game object
 #game class for handling logi and GUI 
