@@ -22,5 +22,20 @@ class GameObject:
         raise NotImplementedError("Must be implemented in subclass")
     
 #snake class inheriting from game object
+class Snake(GameObject):
+    def __init__(self, canvas):
+        super().__init__(canvas)
+        self.body_size = BODY_PARTS
+        self.coordinates = [[0,0] for _ in range(self.body_size)] 
+        self.squares = [] #store canvas rectangles
+        self._create_body() 
+
+    def _create_body(self):
+        for x, y in self.coordinates:
+            square = self._canvas.create_rectangle(x,y,x + SPACE_SIZE, y + SPACE_SIZE, fill = SNAKE_COLOR, tag = "snake")
+            self.squares.append(square)
+
+    
+
 #food class inheriting from game object
 #game class for handling logi and GUI 
