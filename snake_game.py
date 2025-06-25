@@ -66,4 +66,10 @@ class Food(GameObject):
         self.coordinates = self._random_position()
         self.square = self.draw()
 
+    def _random_position(self):
+        #randomly choose a position aligned to the grid
+        x = random.randint(0, (GAME_WIDTH // SPACE_SIZE) - 1 ) * SPACE_SIZE
+        y = random.randint(0, (GAME_WIDTH // SPACE_SIZE) - 1 ) * SPACE_SIZE
+        return [x ,y]
+    
 #game class for handling logi and GUI 
