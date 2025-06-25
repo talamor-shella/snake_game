@@ -54,6 +54,10 @@ class Snake(GameObject):
         square = self._canvas.create_rectangle(x, y, x + SPACE_SIZE, y + SPACE_SIZE, fill = SNAKE_COLOR)
         self.squares.insert(0, square)
 
-
+    def remove_tail(self):
+        self._canvas.delete(self.squares[-1])
+        del self.squares[-1]
+        del self.coordinates[-1]
+        
 #food class inheriting from game object
 #game class for handling logi and GUI 
