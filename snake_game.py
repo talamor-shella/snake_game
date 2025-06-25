@@ -77,3 +77,10 @@ class Food(GameObject):
         return self._canvas.create.oval(x, y , x + SPACE_SIZE, y + SPACE_SIZE, fill = FOOD_COLOR, tag = "food")
     
 #game class for handling logi and GUI 
+class Game:
+    def __init__(self):
+        self.window = Tk()
+        self.window.title("Snake Game OOP")
+        self.window.resizable(False, False)
+
+        
