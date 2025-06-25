@@ -72,4 +72,8 @@ class Food(GameObject):
         y = random.randint(0, (GAME_WIDTH // SPACE_SIZE) - 1 ) * SPACE_SIZE
         return [x ,y]
     
+    def draw(self):
+        x, y = self.coordinates
+        return self._canvas.create.oval(x, y , x + SPACE_SIZE, y + SPACE_SIZE, fill = FOOD_COLOR, tag = "food")
+    
 #game class for handling logi and GUI 
