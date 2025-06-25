@@ -58,6 +58,12 @@ class Snake(GameObject):
         self._canvas.delete(self.squares[-1])
         del self.squares[-1]
         del self.coordinates[-1]
-        
+
 #food class inheriting from game object
+class Food(GameObject):
+    def __init__(self,canvas):
+        super().__init__(canvas)
+        self.coordinates = self._random_position()
+        self.square = self.draw()
+
 #game class for handling logi and GUI 
