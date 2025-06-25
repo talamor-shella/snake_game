@@ -134,3 +134,20 @@ class Game:
             if segment == [x, y]:
                 return True
         return False            
+    
+    #Arrow key events
+    def turn_left(self,event):
+        if self.direction != "right":
+            self.direction = "left"
+
+    def turn_right(self, event):
+        if self.direction != "left":
+            self.direction = "right"
+
+    def turn_up(self,event):
+        if self.direction != "down":
+            self.direction = "up"
+
+    def turn_down(self,event):
+        if self.direction != "up":
+            self.direction = "down"
